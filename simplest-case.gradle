@@ -1,0 +1,11 @@
+apply plugin: 'gitversion'
+
+buildscript {
+	dependencies {
+		classpath files("repo/com/curiousattemptbunny/gradle-git-version-plugin/0.1/gradle-git-version-plugin-0.1.jar")
+	}
+}
+
+task echoVersion << {
+	println version
+}

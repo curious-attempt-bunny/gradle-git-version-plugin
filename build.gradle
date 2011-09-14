@@ -1,0 +1,25 @@
+apply plugin: 'groovy'
+apply plugin: 'idea'
+apply plugin: 'maven'
+
+repositories {
+	mavenCentral()
+}
+
+dependencies {
+	groovy 'org.codehaus.groovy:groovy-all:1.7.10'
+	compile gradleApi()
+}
+
+uploadArchives {
+    repositories.mavenDeployer {
+        repository(url: new File(projectDir, "repo").toURL().toString())
+        pom.version = '0.1'
+		pom.groupId = 'com.curiousattemptbunny'
+        pom.artifactId = 'gradle-git-version-plugin'
+    }
+}
+
+task wrapper(type:Wrapper) {
+	gradleVersion = '1.0-milestone-3'
+}
